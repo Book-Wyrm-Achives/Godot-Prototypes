@@ -1,10 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfd1qy0nd3jp"]
 
-[ext_resource type="Script" path="res://Wall.cs" id="1_meovf"]
+[ext_resource type="Script" path="res://VectorTest.cs" id="1_kjiwu"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(157, 194)
-script = ExtResource("1_meovf")
-Normal = Vector2(1, 0)
+script = ExtResource("1_kjiwu")
