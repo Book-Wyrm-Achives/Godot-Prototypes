@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnaxmjxhwnltd"]
+
+[ext_resource type="Script" path="res://Ball/Ball.cs" id="1_fsdui"]
+[ext_resource type="Script" path="res://Ball/BallCollision.cs" id="2_kb0wn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_php6b"]
+radius = 7.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_k4uc8"]
+
+[node name="Ball" type="Node2D"]
+script = ExtResource("1_fsdui")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_kb0wn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_php6b")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(1, 0.25098, 0.129412, 1)
+scale = Vector2(15, 15)
+mesh = SubResource("SphereMesh_k4uc8")
+
+[connection signal="BallCollided" from="Area2D" to="." method="Bounce"]
+[connection signal="WallCollided" from="Area2D" to="." method="Flip"]
+[connection signal="area_entered" from="Area2D" to="Area2D" method="BallEntered"]

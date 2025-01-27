@@ -32,6 +32,15 @@ namespace BookWyrm.Geometry
             return StartPoint + (point - StartPoint).Projection(Along);
         }
 
+        public bool PointWithin(Vector point) {
+            for(int i = 0; i < (StartPoint.Dimension > EndPoint.Dimension ? StartPoint.Dimension : EndPoint.Dimension); i++) {
+                if(StartPoint[i] > point[i] && point[i] < EndPoint[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public static (Vector nearestOnA, Vector nearestOnB, bool intersect) NearestPointsOnLines (Line a, Line b)
         {
             if (a.Slope == b.Slope) {
