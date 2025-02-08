@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://oqjkm2p5lnyf"]
+
+[ext_resource type="Script" path="res://simple-free-look-camera-4-cf0bc21bfd15940b18ec42e3c6cae1ad385284c4/camera.gd" id="1_tc7jt"]
+[ext_resource type="Script" path="res://BoxMesh.cs" id="1_y8ryg"]
+[ext_resource type="Shader" path="res://simple_unlit.gdshader" id="2_gon60"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mb7dx"]
+render_priority = 0
+shader = ExtResource("2_gon60")
+shader_parameter/color = Color(1, 0.168627, 0.0196078, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qti7n"]
+material = SubResource("ShaderMaterial_mb7dx")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bg3k7"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.794796, 0.606877, 0, -0.606877, 0.794796, -1.22642, 2.6454, 3.69292)
+script = ExtResource("1_tc7jt")
+
+[node name="Environment" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00849962, 0.0244813, -0.00739002)
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.971743, 1.44801e-08, 0.236041, -0.209515, 0.460572, 0.862541, -0.108714, -0.887623, 0.447557, 0, 11.5808, 13.8646)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.673653, 0.571383, -0.468735, -0.209515, 0.460572, 0.862541, 0.708728, 0.679261, -0.190552, 0, 11.5808, 13.8646)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_qti7n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00802326, 0, -0.00939369)
+mesh = SubResource("ArrayMesh_bg3k7")
+script = ExtResource("1_y8ryg")
+Size = 10.0

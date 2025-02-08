@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://culwuj7d3bryy"]
+
+[ext_resource type="Shader" path="res://simple_unlit.gdshader" id="1_plngg"]
+[ext_resource type="Script" path="res://Direction Testing/DirectionFollower.cs" id="2_gel73"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfmmk"]
+render_priority = 0
+shader = ExtResource("1_plngg")
+shader_parameter/color = Color(1, 0.0862745, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jrsts"]
+material = SubResource("ShaderMaterial_mfmmk")
+
+[node name="Direction Test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.197086, 0.0136675, -0.980291)
+mesh = SubResource("SphereMesh_jrsts")
+script = ExtResource("2_gel73")
+Offset = Vector3(0, 0, 0)
+Target = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.980277, 0.0146457, -0.197086, -0.0176845, 0.99975, -0.0136675, 0.196837, 0.0168833, 0.980291, 0, 0, 0)
