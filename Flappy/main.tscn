@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3ykeylu6c7as"]
+
+[ext_resource type="Script" path="res://FlapController.cs" id="1_580lo"]
+[ext_resource type="Script" path="res://ObsticalSpawner.cs" id="2_lbjde"]
+[ext_resource type="PackedScene" uid="uid://cody16xrcmnct" path="res://obstical.tscn" id="3_r4om7"]
+[ext_resource type="Texture2D" uid="uid://ye08aik41gc4" path="res://Pipe.png" id="4_xc43i"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gdd6c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnky2"]
+radius = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v41el"]
+size = Vector2(1, 1)
+
+[node name="Main" type="Node2D"]
+
+[node name="Bird" type="Node2D" parent="."]
+position = Vector2(211, 307)
+script = ExtResource("1_580lo")
+Gravity = 750.0
+FlapVelocity = 350.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Bird"]
+modulate = Color(1, 1, 0.0196078, 1)
+scale = Vector2(25, 25)
+mesh = SubResource("SphereMesh_gdd6c")
+
+[node name="Area2D" type="Area2D" parent="Bird"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/Area2D"]
+scale = Vector2(25, 25)
+shape = SubResource("CircleShape2D_tnky2")
+
+[node name="Obstical Spawn Point" type="Node2D" parent="."]
+position = Vector2(1332, 325)
+script = ExtResource("2_lbjde")
+ObsticalScene = ExtResource("3_r4om7")
+SpawnInterval = 3.0
+
+[node name="Death Box" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Death Box"]
+position = Vector2(0, 650)
+scale = Vector2(1200, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death Box/Area2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_v41el")
+
+[node name="Pipe" type="Sprite2D" parent="."]
+position = Vector2(491.5, 485.5)
+scale = Vector2(5.35938, 5.17188)
+texture = ExtResource("4_xc43i")
+region_rect = Rect2(7, 16, 50, 48)
+
+[connection signal="area_entered" from="Bird/Area2D" to="Bird" method="AreaEntered"]

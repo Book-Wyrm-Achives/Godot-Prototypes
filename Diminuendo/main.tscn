@@ -71,10 +71,9 @@ Normal = Vector2(0, -1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Wall Backgroound/Area2D"]
 shape = SubResource("RectangleShape2D_mujfq")
 
-[node name="Balls" type="Node2D" parent="." node_paths=PackedStringArray("balls")]
+[node name="Balls" type="Node2D" parent="."]
 scale = Vector2(2, 2)
 script = ExtResource("2_h5ja4")
-balls = []
 
 [node name="Ball" parent="Balls" instance=ExtResource("2_o3oyy")]
 position = Vector2(199.5, 92.5)
