@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0ewm06kowhai"]
+
+[ext_resource type="Shader" path="res://BookWyrm/Shapes/Point/Point.gdshader" id="1_r8hrg"]
+[ext_resource type="Script" path="res://BookWyrm/Shapes/Point/PointShape2D.cs" id="2_gh10w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2disq"]
+shader = ExtResource("1_r8hrg")
+shader_parameter/Color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_bxxmd"]
+
+[node name="Point" type="MeshInstance2D"]
+material = SubResource("ShaderMaterial_2disq")
+scale = Vector2(30, 30)
+mesh = SubResource("QuadMesh_bxxmd")
+script = ExtResource("2_gh10w")

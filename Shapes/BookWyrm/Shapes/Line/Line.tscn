@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxprfijg56cn5"]
+
+[ext_resource type="Shader" path="res://BookWyrm/Shapes/Line/Line.gdshader" id="1_aj550"]
+[ext_resource type="Script" path="res://BookWyrm/Shapes/Line/LineShape2D.cs" id="2_1dicf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8q71"]
+shader = ExtResource("1_aj550")
+shader_parameter/AspectRatio = Vector2(50, 30)
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Thickness = 10.0
+shader_parameter/RelativeStartPoint = Vector2(0.92, 0)
+shader_parameter/RelativeEndPoint = Vector2(-0.045, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_a00q0"]
+center_offset = Vector3(0.5, 0.5, 0)
+
+[node name="Line" type="MeshInstance2D"]
+material = SubResource("ShaderMaterial_y8q71")
+scale = Vector2(60, 30)
+mesh = SubResource("QuadMesh_a00q0")
+script = ExtResource("2_1dicf")
