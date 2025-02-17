@@ -1,27 +1,35 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnaxmjxhwnltd"]
 
-[ext_resource type="Script" path="res://Ball/Ball.cs" id="1_fsdui"]
-[ext_resource type="Script" path="res://Ball/BallCollision.cs" id="2_kb0wn"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_php6b"]
-radius = 7.5
+[ext_resource type="Script" path="res://Ball/BallController.cs" id="1_vgkxs"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_k4uc8"]
 
-[node name="Ball" type="Node2D"]
-script = ExtResource("1_fsdui")
+[sub_resource type="CircleShape2D" id="CircleShape2D_tkfrk"]
+radius = 7.5
 
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("2_kb0wn")
+[sub_resource type="CircleShape2D" id="CircleShape2D_10ibk"]
+radius = 7.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_php6b")
+[node name="Ball" type="Node2D" node_paths=PackedStringArray("Cast", "SelfCollider")]
+script = ExtResource("1_vgkxs")
+Speed = 200.0
+Direction = Vector2(1, 1)
+Cast = NodePath("ShapeCast2D")
+SelfCollider = NodePath("Area2D")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 modulate = Color(1, 0.25098, 0.129412, 1)
 scale = Vector2(15, 15)
 mesh = SubResource("SphereMesh_k4uc8")
 
-[connection signal="BallCollided" from="Area2D" to="." method="Bounce"]
-[connection signal="WallCollided" from="Area2D" to="." method="Flip"]
-[connection signal="area_entered" from="Area2D" to="Area2D" method="BallEntered"]
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_tkfrk")
+target_position = Vector2(0, 0)
+collision_mask = 8193
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_10ibk")

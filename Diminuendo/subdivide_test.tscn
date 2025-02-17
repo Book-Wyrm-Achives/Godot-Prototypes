@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck88joxnuruob"]
+
+[ext_resource type="Script" path="res://SubdivideTest.cs" id="1_0j6aq"]
+
+[node name="Subdivide Test" type="Node2D" node_paths=PackedStringArray("Fill", "A", "B")]
+script = ExtResource("1_0j6aq")
+Fill = NodePath("Fill Polygon")
+A = NodePath("A")
+B = NodePath("B")
+
+[node name="Fill Polygon" type="Polygon2D" parent="."]
+z_index = -1
+polygon = PackedVector2Array(-149.48, -50.48, 14, -184, 224, 2, 69, 207, -194, 189)
+
+[node name="A" type="Node2D" parent="."]
+position = Vector2(-229, 95)
+
+[node name="B" type="Node2D" parent="."]
+position = Vector2(273, 87)

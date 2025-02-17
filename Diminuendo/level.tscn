@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvjin6dpi1p3t"]
+
+[ext_resource type="Script" path="res://LevelGenerator.cs" id="1_bjcei"]
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("PointContainer", "FillPolygon", "ShellPolygon", "ShellCollider")]
+script = ExtResource("1_bjcei")
+PointContainer = NodePath("Points")
+FillPolygon = NodePath("Fill")
+ShellPolygon = NodePath("Shell")
+ShellCollider = NodePath("Walls/CollisionPolygon2D")
+ShellThickness = 30.0
+
+[node name="Fill" type="Polygon2D" parent="."]
+
+[node name="Shell" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Points" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Points"]
+position = Vector2(200, 200)
+
+[node name="Node2D2" type="Node2D" parent="Points"]
+position = Vector2(-200, 200)
+
+[node name="Node2D3" type="Node2D" parent="Points"]
+position = Vector2(-200, -200)
+
+[node name="Node2D5" type="Node2D" parent="Points"]
+position = Vector2(2, -103)
+
+[node name="Node2D4" type="Node2D" parent="Points"]
+position = Vector2(200, -200)
+
+[node name="Walls" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(0, 0)
