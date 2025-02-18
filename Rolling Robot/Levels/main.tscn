@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bisb22pj7xo73"]
+
+[ext_resource type="Script" path="res://Platformer Controller/PlatformerController2D.cs" id="1_dwggn"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_kbu1b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqn86"]
+size = Vector2(1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f46qm"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Floor" type="Node2D" parent="."]
+position = Vector2(576, 559)
+scale = Vector2(1000, 35)
+
+[node name="Graphic" type="MeshInstance2D" parent="Floor"]
+mesh = SubResource("QuadMesh_kbu1b")
+
+[node name="Collision Area" type="Area2D" parent="Floor"]
+
+[node name="Collision Shape" type="CollisionShape2D" parent="Floor/Collision Area"]
+shape = SubResource("RectangleShape2D_pqn86")
+
+[node name="Player" type="Node2D" parent="." node_paths=PackedStringArray("GroundSensor")]
+position = Vector2(566, 349)
+script = ExtResource("1_dwggn")
+GravityDirection = Vector2(0, 1)
+GravityScale = 600.0
+MoveAcceleration = 500.0
+MoveDecceleration = 500.0
+MaxMoveSpeed = 300.0
+JumpSpeed = 500.0
+GroundSensor = NodePath("Ground Sensor")
+
+[node name="Graphic" type="MeshInstance2D" parent="Player"]
+modulate = Color(0.866667, 0.498039, 0, 1)
+scale = Vector2(30, 30)
+mesh = SubResource("SphereMesh_f46qm")
+
+[node name="Ground Sensor" type="RayCast2D" parent="Player"]
+position = Vector2(0, 15)
+target_position = Vector2(0, 10)
+hit_from_inside = true
+collide_with_areas = true

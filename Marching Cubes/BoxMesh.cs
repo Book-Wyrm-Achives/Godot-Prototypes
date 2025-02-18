@@ -31,7 +31,27 @@ public partial class BoxMesh : MeshInstance3D
             new Vector3(1, -1, -1) * Size
         });
 
-        
+        uvs.AddRange(new Vector2[]{
+            new Vector2(1, 1),
+            new Vector2(0, 1),
+            new Vector2(0, 0),
+            new Vector2(1, 0),
+            new Vector2(1, 1),
+            new Vector2(0, 1),
+            new Vector2(0, 0),
+            new Vector2(1, 0)
+        });
+
+        normals.AddRange(new Vector3[]{
+            new Vector3(0, 0, 1),
+            new Vector3(0, 0, 1),
+            new Vector3(0, 0, 1),
+            new Vector3(0, 0, 1),
+            new Vector3(0, 0, -1),
+            new Vector3(0, 0, -1),
+            new Vector3(0, 0, -1),
+            new Vector3(0, 0, -1)
+        });
 
         indeces.AddRange(new int[] {
             0, 1, 2,
