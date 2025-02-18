@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://df0myw5vu87h1"]
+
+[ext_resource type="Script" path="res://Input Manager/TheSimplestControl.cs" id="1_o05x4"]
+[ext_resource type="Script" path="res://Input Manager/InputManager.cs" id="1_r8r5l"]
+[ext_resource type="Resource" uid="uid://cf47sidrs0vfy" path="res://Input Manager/Default Inputs/Move.tres" id="2_2w8h1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_i6ehb"]
+
+[node name="Input Manager Test" type="Node2D"]
+
+[node name="Input Manager" type="Node" parent="."]
+script = ExtResource("1_r8r5l")
+TestInputs = Array[Resource]([ExtResource("2_2w8h1")])
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(396, 230)
+scale = Vector2(30, 30)
+mesh = SubResource("SphereMesh_i6ehb")
+script = ExtResource("1_o05x4")
+Speed = 200.0
