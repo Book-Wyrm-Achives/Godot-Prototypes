@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dslhi23olgpbr"]
+
+[ext_resource type="Script" path="res://BookWyrm/Input Manager/Input Resources/Basic Inputs/KeyButton.cs" id="1_okatg"]
+
+[resource]
+script = ExtResource("1_okatg")
+ButtonKey = 32
+Name = "TestButton"

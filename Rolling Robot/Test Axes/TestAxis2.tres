@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d0garis8pdnaj"]
+
+[ext_resource type="Script" path="res://BookWyrm/Input Manager/Input Resources/Basic Inputs/KeyAxis2.cs" id="1_xmidg"]
+
+[resource]
+script = ExtResource("1_xmidg")
+UpKey = 87
+DownKey = 83
+RightKey = 68
+LeftKey = 65
+Name = "TestAxis2"

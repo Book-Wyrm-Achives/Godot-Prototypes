@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct0wqtcpgb4ej"]
+
+[ext_resource type="Script" path="res://SimpleMover.cs" id="1_q36ua"]
+[ext_resource type="Script" path="res://SimpleSlider.cs" id="2_2cdjy"]
+[ext_resource type="Script" path="res://SimpleColorChanger.cs" id="3_wxiwg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jc5qr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j2h8e"]
+
+[node name="Input Manager Test" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(353, 184)
+scale = Vector2(30, 30)
+mesh = SubResource("SphereMesh_jc5qr")
+script = ExtResource("1_q36ua")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+position = Vector2(447, 412)
+scale = Vector2(30, 30)
+mesh = SubResource("BoxMesh_j2h8e")
+script = ExtResource("2_2cdjy")
+Speed = 200.0
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
+position = Vector2(838, 219)
+scale = Vector2(128.123, -206.015)
+mesh = SubResource("BoxMesh_j2h8e")
+script = ExtResource("3_wxiwg")
+cTrue = Color(1, 0, 0, 1)
+cFalse = Color(0, 0, 1, 1)

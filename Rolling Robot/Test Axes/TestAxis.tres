@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ctlofbsb3jnrj"]
+
+[ext_resource type="Script" path="res://BookWyrm/Input Manager/Input Resources/Basic Inputs/KeyAxis.cs" id="1_tgtdx"]
+
+[resource]
+script = ExtResource("1_tgtdx")
+PositiveKey = 4194321
+NegativeKey = 4194319
+Name = "TestAxis"

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8g4k8eye4tqa"]
+
+[ext_resource type="Script" path="res://BookWyrm/Timer/TimerNode.cs" id="1_dukil"]
+[ext_resource type="Script" path="res://TimerTest.cs" id="1_ndxhu"]
+[ext_resource type="Script" path="res://TimerFollower.cs" id="3_0tebd"]
+
+[node name="Timer Test" type="Node2D"]
+
+[node name="Timer Test" type="Node" parent="."]
+script = ExtResource("1_ndxhu")
+Duration = 3.0
+
+[node name="Timer Node Test" type="Node" parent="."]
+script = ExtResource("1_dukil")
+Duration = 3.0
+ResetOnCompletion = true
+ResetOnReady = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Timer Test" type="Button" parent="CanvasLayer"]
+offset_left = 413.0
+offset_top = 118.0
+offset_right = 757.0
+offset_bottom = 179.0
+text = "Timer Test"
+
+[node name="Timer Node Test" type="Button" parent="CanvasLayer"]
+offset_left = 409.0
+offset_top = 268.0
+offset_right = 753.0
+offset_bottom = 329.0
+text = "Timer Node Test"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." node_paths=PackedStringArray("timer")]
+offset_left = 766.0
+offset_top = 277.0
+offset_right = 1108.0
+offset_bottom = 317.0
+text = "0.0000"
+script = ExtResource("3_0tebd")
+timer = NodePath("../Timer Node Test")
+
+[connection signal="OnTimerComplete" from="Timer Node Test" to="Timer Test" method="OnTimerNodeComplete"]
+[connection signal="pressed" from="CanvasLayer/Timer Test" to="Timer Test" method="ResetTimer"]
+[connection signal="pressed" from="CanvasLayer/Timer Node Test" to="Timer Node Test" method="Reset"]
