@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgq20a8jqypy8"]
+
+[ext_resource type="PackedScene" uid="uid://btln0nei0d28g" path="res://Player/Player.tscn" id="1_scgid"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_8nwjh"]
+script/source = "using Godot;
+using System;
+
+public partial class ForceTester : Node
+{
+}
+"
+
+[node name="Main" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_scgid")]
+position = Vector2(572, 345)
+DragForce = 300.0
+
+[node name="Tapper" type="Node" parent="." node_paths=PackedStringArray("pc")]
+script = SubResource("CSharpScript_8nwjh")
+ForceMagnitude = 20000.0
+pc = NodePath("../Node2D")
